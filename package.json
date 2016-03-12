@@ -1,0 +1,25 @@
+{
+  "name": "css-swatchify",
+  "version": "0.0.1",
+  "description": "Re-map all existing colors in css file(s). Supply a color swatch of RGB/HEX and it will match closest colors. Supports LESS/SASS/Stylus variable mode. As well as any # of input colors, as well as an ignore colors list!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "css",
+    "color",
+    "re-map",
+    "best-fit",
+    "nearest",
+    "match"
+  ],
+  "author": "Dan Levy <Dan@danlevy.net>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "chalk": "^1.1.1",
+    "lodash": "^4.6.1",
+    "yargs": "^4.2.0"
+  }
+}
