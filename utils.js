@@ -1,3 +1,4 @@
+var Colours = require('./colours');
 
 /* Public utility methods */
 module.exports = {
@@ -8,7 +9,13 @@ module.exports = {
   colorDelta:     colorDelta,
   parseSwatches:  parseSwatches,
 };
+function toColour(str) {
+  if (/^rgb/.test(str)) {
 
+  } else {
+
+  }
+}
 /* 
 Expand shorthand form (e.g. '#DFE') to full form (e.g. '#DDEEFF')
 */
@@ -16,7 +23,7 @@ function hexParse(hex) {
   var regexHex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(regexHex, function(x, r, g, b) { return r + r + g + g + b + b; });
   var parts = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return parts ? [parseInt(parts[1], 16), parseInt(parts[2], 16), parseInt(parts[3], 16)] : null;
+  return parts ? [parseInt(parts[1], 16), parseInt(parts[2], 16), parseInt(parts[3], 16), 1.0] : null;
 }
 function rgbToColor(r, g, b, a) {
   if ( !a ) {
@@ -34,10 +41,11 @@ function rgbaParse(str) {
     return parts ? [parseInt(parts[1], 16), parseInt(parts[2], 16), parseInt(parts[3], 16), parseInt(parts[4], 16)] : null;
   } else if ( rgbPattern.test(str) ) { 
     parts = rgbPattern.exec(str);
-    return parts ? [parseInt(parts[1], 16), parseInt(parts[2], 16), parseInt(parts[3], 16)] : null;
+    return parts ? [parseInt(parts[1], 16), parseInt(parts[2], 16), parseInt(parts[3], 16), 1.0] : null;
   }
   return false;
 }
+
 /* Private Internal */
 function _intToHex(int) {
   var h = int.toString(16);
@@ -61,4 +69,8 @@ function colorDelta(c1, c2) {
 
 function sumOfDelta(deltaArray) {
   return Math.sum(deltaArray);
+}
+
+function getClosestColor(color, swatches) {
+  
 }

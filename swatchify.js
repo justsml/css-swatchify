@@ -5,7 +5,9 @@ var fileProcessor = require('./file-processor');
 const colorPattern = /#[a-f\d]{6}|#[a-f\d]{3}|rgb\(\d+[,\s]*\d+[,\s]*\d+[,\s]*\)|rgba\(\d+[,\s]*\d+[,\s]*\d+[,\s]*[\d\.]*\)/ig;
 
 function Swatchify({input, output, swatch, mode}) {
-	if (input === '-') { input = process.stdin; }
+	swatch = parseSwatches(swatch);
+	console.log('Using Swatches:', swatch);
+	
 	var fp = fileProcessor(input, function _onLine(err, line) {
 		if ( line ) {
 			line = line.replace(colorPattern, function _handleColor(color) {

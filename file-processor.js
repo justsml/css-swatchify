@@ -14,6 +14,7 @@ Either handle data event or callback
 */
 function FileProcessor(stream, callback) {
   if (!(this instanceof FileProcessor)) { return new FileProcessor(stream, callback); }
+  if (stream === '-') { input = process.stdin; }
   if (typeof(stream) === 'string') { stream = require('fs').createReadStream(stream, 'utf8'); }
   // Setup events, and lineReader
   EventEmitter.call(this);
